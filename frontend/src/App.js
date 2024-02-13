@@ -1,5 +1,6 @@
 import Menu from './components/Menu';
 import SearchBar from './components/Search';
+import PropertyList from './components/Property';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <SearchBar />
       <Menu />
       </div>
+      <PropertyList />
     
     </div>
   );
