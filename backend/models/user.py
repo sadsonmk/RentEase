@@ -11,7 +11,6 @@ from backend import db
 class User(db.Model, BaseModel, Base):
 
     __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
     full_name = Column(String(200), nullable=False)
     email = Column(String(150), nullable=False)
     phone_number = Column(String(15), nullable=False)

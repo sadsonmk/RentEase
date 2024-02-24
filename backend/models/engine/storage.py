@@ -31,10 +31,10 @@ class DBStorage:
         # RNT_MYSQL_DB = getenv('RNT_MYSQL_DB')
         # RNT_ENV = getenv('RNT_ENV')
 
-        RNT_MYSQL_USER = 'root'
-        RNT_MYSQL_PWD = ''
+        RNT_MYSQL_USER = 'dev'
+        RNT_MYSQL_PWD = 'dev_pwd'
         RNT_MYSQL_HOST = 'localhost'
-        RNT_MYSQL_DB = 'rent-ease'
+        RNT_MYSQL_DB = 'rent_ease_db'
         RNT_ENV = getenv('RNT_ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                       format(RNT_MYSQL_USER,
