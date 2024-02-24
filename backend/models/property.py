@@ -10,7 +10,7 @@ from sqlalchemy import Float, ForeignKey, Boolean
 class Property(BaseModel, Base):
     __tablename__ = 'properties'
 
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
     title = Column(String(50), nullable=False)
     description = Column(String(1000), nullable=False)
     location = Column(String(500), nullable=False)

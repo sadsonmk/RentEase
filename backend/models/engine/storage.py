@@ -33,7 +33,7 @@ class DBStorage:
 
         RNT_MYSQL_USER = 'dev'
         RNT_MYSQL_PWD = 'dev_pwd'
-        RNT_MYSQL_HOST = 'localhost'
+        RNT_MYSQL_HOST = '127.0.0.1'
         RNT_MYSQL_DB = 'rent_ease_db'
         RNT_ENV = getenv('RNT_ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.

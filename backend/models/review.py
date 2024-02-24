@@ -10,9 +10,9 @@ from sqlalchemy import ForeignKey
 class Review(BaseModel, Base):
     __tablename__ = 'review'
 
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-    property_id = Column(Integer, ForeignKey('property.id'), nullable=False)
-    booking_id = Column(Integer, ForeignKey('bookings.id'), nullable=False)
+    user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    property_id = Column(String(60), ForeignKey('properties.id'), nullable=False)
+    booking_id = Column(String(60), ForeignKey('bookings.id'), nullable=False)
     comment = Column(String(1000), nullable=False)
     rating = Column(Integer, nullable=False)
     miscellaneous = Column(String(1000), default="")

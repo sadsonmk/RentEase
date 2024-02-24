@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""starts a flask app for our api"""
+"""handles views for users"""
 
 from models.user import User
 from models import storage

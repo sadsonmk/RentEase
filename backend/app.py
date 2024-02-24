@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """starts a flask app for our api"""
 
+from api.views import app_views
 from flask import Flask, jsonify
-
-# from api.v1.views import app_views
 from models import storage
 
 app = Flask(__name__)
-# app.register_blueprint(app_views)
+app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
@@ -24,7 +23,7 @@ def not_found(error):
       404:
         description: a resource was not found
     """
-    return jsonify({'error': "Not found"}), 404
+    return jsonify({'error': "Page Not found"}), 404
 
 
 # value_host = os.getenv('HBNB_API_HOST')

@@ -12,8 +12,8 @@ from sqlalchemy.orm import relationship
 class Booking(BaseModel, Base):
     __tablename__ = 'bookings'
 
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-    property_id = Column(Integer, ForeignKey('properties.id'), nullable=False)
+    user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    property_id = Column(String(60), ForeignKey('properties.id'), nullable=False)
     number_of_users = Column(Integer, nullable=False)
     total_cost = Column(Double, nullable=False)
     rent_purpose = Column(String(500), nullable=False)

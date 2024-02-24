@@ -5,10 +5,9 @@ from flask import Flask
 import sqlalchemy
 from sqlalchemy import Column, String, Integer, BLOB
 from sqlalchemy.orm import relationship
-from backend import db
 
 
-class User(db.Model, BaseModel, Base):
+class User(BaseModel, Base):
 
     __tablename__ = 'users'
     full_name = Column(String(200), nullable=False)
@@ -19,7 +18,7 @@ class User(db.Model, BaseModel, Base):
     profile_picture = Column(BLOB, nullable=False)
     bio = Column(String(1000), nullable=False)
     user_role = Column(Integer, nullable=False)
-    bookings = relationship("Bookings", back_populates="user")
+    bookings = relationship("Booking", back_populates="user")
     properties = relationship("Place", back_populates="user")  
     reviews = relationship("Review", back_populates="user")
 
