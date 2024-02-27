@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from flask import Flask
 import sqlalchemy
-from sqlalchemy import Column, String, Integer, BLOB
+from sqlalchemy import Column, String, BLOB
 from sqlalchemy.orm import relationship
 from sqlalchemy import Float, ForeignKey, Boolean
 

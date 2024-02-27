@@ -46,7 +46,7 @@ def create_user():
 def update_user(user_id):
     user = storage.get(User, user_id) or abort(404)
     data = request.get_json() or abort(400, description="Not a JSON")
-    ignore = ['id', 'email', 'created_at', 'updated_at']
+    ignore = ['id', 'email', 'created_at']
     for key, value in data.items():
         if key not in ignore:
             setattr(user, key, value)
