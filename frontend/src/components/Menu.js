@@ -1,26 +1,24 @@
 import React from "react";
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../index.css'
+
 
 
 function Menu(){
     const menuItems = [
         {label: 'Home', path: '/'},
         {label: 'Rent', path: '/rent'},
-        {label: 'List', path: '/list'},
         {label: 'About', path: '/about'},
         {label: 'Contact', path: '/contact'},
+        {label: 'Sign In/Up', path: "/signinup"},
     ];
 
     return (
         <nav className="menu">
-            <ul>
+            <ul >
                 {menuItems.map((item) => (
                     <li key={item.label}>
-                        <BrowserRouter>
-                        <Link to={item.path}>{item.label}</Link>
-                        </BrowserRouter>
-                        
+                        <Link to={item.path}>{item.label}</Link> 
                     </li>
                 ))}
             </ul>
