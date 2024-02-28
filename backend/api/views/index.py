@@ -22,12 +22,31 @@ def index():
 @app_views.route('/home', strict_slashes=False, methods=['GET'])
 def home():
     """home screen of the app"""
-    return jsonify({"status": "OK"})
+    return jsonify([{'id': 1,
+        "title": 'Apartment',
+        'description': 'a modern apartment building',
+        'image': '...',
+        'price': '$1,500/month',
+        'location': 'Beijing/China'},  {
+       'id': 2,
+       "title": 'Apartment',
+       'description': 'a modern apartment building',
+       'image': '...',
+       'price': '$2,500/month',
+       'location': 'Shanghai/China'
+   }])
 
 @app_views.route('/', strict_slashes=False, methods=['GET'])
 def base():
     """home screen of the app"""
-    return jsonify({"status": "OK"})
+    return jsonify({
+        'id': 1,
+        'title': 'Apartment',
+        'description': 'a modern apartment building',
+        'image': '...',
+        'price': '$1,500/month',
+        'location': 'Beijing/China'
+    })
 
 @app_views.route('/stats')
 def num_objects():
