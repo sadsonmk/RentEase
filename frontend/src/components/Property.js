@@ -30,10 +30,21 @@ const PropertyList = () => {
   const [properties, setProperties] = React.useState([]);
 
   React.useEffect(() => {
+    // fetch('http://127.0.0.1:5000/api/home')
+    //   .then((response) => response.json())
+    //   .then((data) => setProperties(data));
     fetch('http://127.0.0.1:5000/api/home')
-      .then((response) => response.json())
-      .then((data) => setProperties(data));
-      
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then((data) => setProperties(data))
+  .catch((error) => {
+    console.error('There has been a problem with your fetch operation:', error);
+  });
+    
   }, []);
 
   return (
@@ -54,13 +65,11 @@ const PropertyList = () => {
                 <p>{property.price}</p>
                 <p>{property.location}</p>
               </CardActionArea>
-            </CardContent>
-
-            
+            </CardContent>  
           </Card>
         </Grid>
       ))) : (
-        <p>No properties found</p>
+        <p>Loading...</p>
       )}
     </Grid>
     </div>
