@@ -1,0 +1,1 @@
+"<!doctype html>\n<html lang=en>\n<title>400 Bad Request</title>\n<h1>Bad Request</h1>\n<p>Missing, empty or wrong type for profile_picture:                    Expected &lt;class &#39;str&#39;&gt; but got &lt;class &#39;str&#39;&gt;</p>\n"

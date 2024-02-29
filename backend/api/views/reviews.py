@@ -60,7 +60,7 @@ def update_review(review_id):
     """
     review = storage.get(Review, review_id) or abort(404)
     data = request.get_json() or abort(400, description="Not a JSON")
-    ignore = ['id', 'user_id', 'property_id', 'booking_id', 'created_at']
+    ignore = ['id', 'user_id', 'property_id', 'booking_id']
     fields = {
         'comment': str,
         'rating': int,

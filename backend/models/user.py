@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from flask import Flask
 import sqlalchemy
-from sqlalchemy import Column, String, Integer, BLOB
+from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 
 
@@ -15,11 +15,11 @@ class User(BaseModel, Base):
     phone_number = Column(String(15), nullable=False)
     password = Column(String(500), nullable=False)
     verification_status = Column(Integer, nullable=False)
-    profile_picture = Column(BLOB, nullable=False)
+    profile_picture = Column(String(500), nullable=True, default=None)
     bio = Column(String(1000), nullable=False)
     user_role = Column(Integer, nullable=False)
     bookings = relationship("Booking", back_populates="user")
-    properties = relationship("Place", back_populates="user")  
+    properties = relationship("Property", back_populates="user")  
     reviews = relationship("Review", back_populates="user")
 
     def __init__(self, *args, **kwargs):

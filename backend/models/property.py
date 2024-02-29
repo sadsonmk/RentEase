@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from flask import Flask
 import sqlalchemy
-from sqlalchemy import Column, String, BLOB
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from sqlalchemy import Float, ForeignKey, Boolean
 
@@ -16,7 +16,7 @@ class Property(BaseModel, Base):
     location = Column(String(500), nullable=False)
     address = Column(String(500), nullable=False)
     type = Column(String(45), nullable=False)
-    picture = Column(BLOB, nullable=False)
+    picture = Column(String(500), nullable=True, default=None)
     price = Column(Float, nullable=False)
     availability = Column(Boolean, nullable=False)
     miscellaneous = Column(String(500))

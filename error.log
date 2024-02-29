@@ -1,0 +1,284 @@
+Exception on /api/properties [POST]
+Traceback (most recent call last):
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 330, in _query
+    db.query(q)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`rent_ease_db`.`properties`, CONSTRAINT `properties_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flasgger/utils.py", line 305, in wrapper
+    return function(*args, **kwargs)
+  File "/home/jekwu/alx_programm/RentEase/backend/api/views/properties.py", line 66, in create_property
+    instance.save()
+  File "/home/jekwu/alx_programm/RentEase/backend/models/base_model.py", line 56, in save
+    models.storage.save()
+  File "/home/jekwu/alx_programm/RentEase/backend/models/engine/storage.py", line 80, in save
+    self.__session.commit()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/scoping.py", line 598, in commit
+    return self._proxied.commit()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1969, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1256, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1231, in _prepare_impl
+    self.session.flush()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4312, in flush
+    self._flush(objects)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4447, in _flush
+    with util.safe_reraise():
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4408, in _flush
+    flush_context.execute()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 1043, in _emit_insert_statements
+    result = connection.execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2343, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 330, in _query
+    db.query(q)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`rent_ease_db`.`properties`, CONSTRAINT `properties_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))')
+[SQL: INSERT INTO properties (user_id, title, description, location, address, type, picture, price, availability, miscellaneous, id, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)]
+[parameters: (' cf63a745-50fb-40fc-8a56-6c8d78ed12ea', ' Beautiful Beach House', 'This is a beautiful beach house with 3 bedrooms and 2 bathrooms.', '123 Beach Ave, Miami, FL 33139', '123 Beach Ave, Miami, FL 33139', 'House', '20240229-203224jumia-pickup-station-is-it-a-good-business.jpeg', 500.02, 1, 'No pets allowed', 'a56b4fa8-35c7-4967-9833-414a44ada60c', datetime.datetime(2024, 2, 29, 19, 32, 24, 434253), datetime.datetime(2024, 2, 29, 19, 32, 24, 434303))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Exception on /api/properties [POST]
+Traceback (most recent call last):
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 330, in _query
+    db.query(q)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`rent_ease_db`.`properties`, CONSTRAINT `properties_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flasgger/utils.py", line 305, in wrapper
+    return function(*args, **kwargs)
+  File "/home/jekwu/alx_programm/RentEase/backend/api/views/properties.py", line 66, in create_property
+    return make_response(jsonify(instance.to_dict()), 201)
+  File "/home/jekwu/alx_programm/RentEase/backend/models/base_model.py", line 56, in save
+    models.storage.save()
+  File "/home/jekwu/alx_programm/RentEase/backend/models/engine/storage.py", line 80, in save
+    self.__session.commit()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/scoping.py", line 598, in commit
+    return self._proxied.commit()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1969, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1256, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1231, in _prepare_impl
+    self.session.flush()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4312, in flush
+    self._flush(objects)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4447, in _flush
+    with util.safe_reraise():
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4408, in _flush
+    flush_context.execute()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 1043, in _emit_insert_statements
+    result = connection.execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2343, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 330, in _query
+    db.query(q)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`rent_ease_db`.`properties`, CONSTRAINT `properties_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))')
+[SQL: INSERT INTO properties (user_id, title, description, location, address, type, picture, price, availability, miscellaneous, id, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)]
+[parameters: (' cf63a745-50fb-40fc-8a56-6c8d78ed12ea', ' Beautiful Beach House', 'This is a beautiful beach house with 3 bedrooms and 2 bathrooms.', '123 Beach Ave, Miami, FL 33139', '123 Beach Ave, Miami, FL 33139', 'House', '20240229-203437jumia-pickup-station-is-it-a-good-business.jpeg', 500.02, 1, 'No pets allowed', '30241ef4-7924-4fd2-994d-e5312e066f21', datetime.datetime(2024, 2, 29, 19, 34, 37, 20535), datetime.datetime(2024, 2, 29, 19, 34, 37, 20596))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Exception on /api/properties [POST]
+Traceback (most recent call last):
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flasgger/utils.py", line 305, in wrapper
+    return function(*args, **kwargs)
+  File "/home/jekwu/alx_programm/RentEase/backend/api/views/properties.py", line 48, in create_property
+    json_data = Utility.parse_form_data(request)
+  File "/home/jekwu/alx_programm/RentEase/backend/api/views/utils.py", line 15, in parse_form_data
+    form_data[key], value = value.strip()
+ValueError: too many values to unpack (expected 2)
+Exception on /api/properties [POST]
+Traceback (most recent call last):
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 330, in _query
+    db.query(q)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`rent_ease_db`.`properties`, CONSTRAINT `properties_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/flasgger/utils.py", line 305, in wrapper
+    return function(*args, **kwargs)
+  File "/home/jekwu/alx_programm/RentEase/backend/api/views/properties.py", line 65, in create_property
+    instance.save()
+  File "/home/jekwu/alx_programm/RentEase/backend/models/base_model.py", line 56, in save
+    models.storage.save()
+  File "/home/jekwu/alx_programm/RentEase/backend/models/engine/storage.py", line 80, in save
+    self.__session.commit()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/scoping.py", line 598, in commit
+    return self._proxied.commit()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1969, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1256, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1231, in _prepare_impl
+    self.session.flush()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4312, in flush
+    self._flush(objects)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4447, in _flush
+    with util.safe_reraise():
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4408, in _flush
+    flush_context.execute()
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 1043, in _emit_insert_statements
+    result = connection.execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2343, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/jekwu/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/cursors.py", line 330, in _query
+    db.query(q)
+  File "/home/jekwu/.local/lib/python3.10/site-packages/MySQLdb/connections.py", line 255, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`rent_ease_db`.`properties`, CONSTRAINT `properties_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))')
+[SQL: INSERT INTO properties (user_id, title, description, location, address, type, picture, price, availability, miscellaneous, id, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)]
+[parameters: (' cf63a745-50fb-40fc-8a56-6c8d78ed12ea', 'Beautiful Beach House', 'This is a beautiful beach house with 3 bedrooms and 2 bathrooms.', '123 Beach Ave, Miami, FL 33139', '123 Beach Ave, Miami, FL 33139', 'House', '20240229-211819jumia-pickup-station-is-it-a-good-business.jpeg', 500.02, 1, 'No pets allowed', '7d3f7a72-4003-4218-aed2-43f8ad44658a', datetime.datetime(2024, 2, 29, 20, 18, 19, 627755), datetime.datetime(2024, 2, 29, 20, 18, 19, 627802))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

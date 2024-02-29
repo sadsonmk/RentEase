@@ -1,13 +1,54 @@
 #!/usr/bin/python3
 """starts a flask app for our api"""
-
+import os
+from werkzeug.datastructures import FileStorage
 from api.views import app_views
 from flask import Flask, jsonify
 from models import storage
+import logging
 
 app = Flask(__name__)
-app.register_blueprint(app_views)
 
+
+relative_path = './backend/misc/owners/UPLOAD_FOLDER'
+absolute_path = os.path.abspath(relative_path)
+
+relative_prop = './backend/misc/props/PROPERTY'
+absolute_prop = os.path.abspath(relative_prop)
+
+relative_revs = './backend/revs/props/REVIEWS'
+absolute_revs = os.path.abspath(relative_revs)
+
+app.config['UPLOAD_FOLDER'] = absolute_path
+app.config['PROPERTY'] = absolute_prop
+app.config['REVIEWS'] = absolute_revs
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+upload_folder = app.config['UPLOAD_FOLDER']
+prop_folder = app.config['UPLOAD_FOLDER']
+revs_folder = app.config['UPLOAD_FOLDER']
+
+# Check if the directory exists, if not, create it
+if not os.path.exists(upload_folder):
+    os.makedirs(upload_folder)
+
+# Check if the directory exists, if not, create it
+if not os.path.exists(prop_folder):
+    os.makedirs(prop_folder)
+
+# Check if the directory exists, if not, create it
+if not os.path.exists(revs_folder):
+    os.makedirs(revs_folder)
+
+
+# Set up the logger
+handler = logging.FileHandler('error.log')  # errors are logged to this file
+handler.setLevel(logging.ERROR)  # only log errors and above
+app.logger.addHandler(handler)
+
+# Your routes and other code...
+
+app.register_blueprint(app_views)
 
 @app.teardown_appcontext
 def tear(exception):
